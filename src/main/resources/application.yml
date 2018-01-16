@@ -1,0 +1,61 @@
+server:
+  port: 8081
+spring:
+  main:
+    banner-mode: "off"
+  devtools:
+    restart:
+      trigger-file: .trigger
+  thymeleaf:
+    cache: false
+  profiles:      # 配置激活某个环境 application-dev.yml,application-prod.yml
+    active: prod  # jar 动态根据环境部署  java -jar spring-boot-web-demo-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
+management:
+  security:
+    enabled: false #关掉安全认证
+  port: 1101 #管理端口调整成1101
+  context-path: /admin #actuator的访问路径
+endpoints:
+  shutdown:
+    enabled: true
+
+web:
+  config:
+    webTitle: "title1"
+    authorName: "name1"
+    authorBlogUrl: "http://yjmyzz.cnblogs.com/"
+
+# 配置数据源参数
+druid:
+    url: jdbc:mysql://localhost:3306/study?useSSL=false
+    driver-class: com.mysql.jdbc.Driver
+    username: root
+    password: ***
+    initial-size: 1
+    min-idle: 1
+    max-active: 20
+    test-on-borrow: true
+
+mybatis:
+    type-aliases-package: com.cnblogs.yjmyzz.service.dao
+    mapper-locations: classpath:mapper/*.xml
+
+mapper:
+    mappers:
+        - com.cnblogs.yjmyzz.util.MyMapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+logging:
+    level:
+        root: DEBUG
+        tk.mybatis: DEBUG
+        com.alibaba.dubbo: ERROR
+        org.apache.zookeeper: ERROR
+    file: "/var/log/application/dubbo-provider.log"

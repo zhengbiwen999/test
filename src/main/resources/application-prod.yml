@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  main:
+    banner-mode: "off"
+  devtools:
+    restart:
+      trigger-file: .trigger
+  thymeleaf:
+    cache: false
+management:
+  security:
+    enabled: false #关掉安全认证
+  port: 1101 #管理端口调整成1101
+  context-path: /admin #actuator的访问路径
+endpoints:
+  shutdown:
+    enabled: true
+
+web:
+  config:
+    webTitle: "title1(prod)"
+    authorName: "name1(prod)"
+    authorBlogUrl: "http://yjmyzz.cnblogs.com/"
