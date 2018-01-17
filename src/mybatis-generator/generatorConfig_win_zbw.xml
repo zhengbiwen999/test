@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!--<property name="mappers" value="cn.mwee.winpos.common.utils.mybatis.MWMapper"/>-->
+            <!--<property name="beginningDelimiter" value="`"/>-->
+            <!--<property name="endingDelimiter" value="`"/>-->
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                         <!--connectionURL="jdbc:mysql://10.10.0.227:3306/winpos?useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;tinyInt1isBit=false"-->
+                         <!--userId="root"-->
+                         <!--password="123456">-->
+         <!--</jdbcConnection>-->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.0.19.6:30291/winpos?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;tinyInt1isBit=false&amp;allowMultiQueries=true&amp;useLocalSessionState=true&amp;autoReconnect=true&amp;failOverReadOnly=false"
+                        userId="devuser2"
+                        password="LC2q@dM=T5!pmoAwf5k">
+        </jdbcConnection>
+
+
+        <javaModelGenerator targetPackage="test.com.exemple"
+                            targetProject="../test/java/"/>
+
+        <sqlMapGenerator targetPackage="mybatis/winpos"
+                         targetProject="../test/resources/"/>
+
+        <javaClientGenerator targetPackage="test.com.exemple"
+                             targetProject="../test/java/"
+                             type="XMLMAPPER"/>
+
+
+<!--
+        <table tableName="tbprinter" domainObjectName="PrinterEntity"
+            enableCountByExample="false"
+            enableUpdateByExample="false"
+            enableDeleteByExample="false"
+            enableSelectByExample="false"
+            selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true" />
+        <columnRenamingRule searchString="^f[i,s,d]" replaceString=""/>
+        </table>-->
+
+
+        <table tableName="tbprinter" domainObjectName="PrinterEntity"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <columnRenamingRule searchString="^f[i,s,d]" replaceString=""/>
+        </table>
+
+    </context>
+</generatorConfiguration>
