@@ -4,9 +4,6 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by 菩提树下的杨过 on 2017/4/15.
- */
 @Data
 @Component
 @ConfigurationProperties(prefix = "web.config")  //这表示这个类将从属性文件中读取web.config开头的属性值

@@ -27,22 +27,22 @@ web:
 
 # 配置数据源参数
 druid:
-    url: jdbc:mysql://localhost:3306/study?useSSL=false
-    driver-class: com.mysql.jdbc.Driver
-    username: root
-    password: ***
+    url: jdbc:mysql://39.106.45.190:3306/study
+    driverClass: com.mysql.jdbc.Driver
+    userName: root
+    password: Liuqi999!
     initial-size: 1
-    min-idle: 1
-    max-active: 20
-    test-on-borrow: true
+    minIdle: 1
+    maxActive: 20
+    testOnBorrow: true
 
 mybatis:
-    type-aliases-package: com.cnblogs.yjmyzz.service.dao
+    type-aliases-package: com.example.dao
     mapper-locations: classpath:mapper/*.xml
 
 mapper:
     mappers:
-        - com.cnblogs.yjmyzz.util.MyMapper
+        - com.example.dao.mapper.MyMapper
     not-empty: false
     identity: MYSQL
 
@@ -52,10 +52,10 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql
 
-logging:
-    level:
-        root: DEBUG
-        tk.mybatis: DEBUG
-        com.alibaba.dubbo: ERROR
-        org.apache.zookeeper: ERROR
-    file: "/var/log/application/dubbo-provider.log"
+#logging:
+#    level:
+#        root: DEBUG
+#        tk.mybatis: DEBUG
+#        com.alibaba.dubbo: ERROR
+#        org.apache.zookeeper: ERROR
+#    file: "/var/log/application/dubbo-provider.log"
