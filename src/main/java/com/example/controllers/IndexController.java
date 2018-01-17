@@ -1,16 +1,23 @@
 package com.example.controllers;
 
 import com.example.config.WebConfig;
+import com.example.model.CityEntity;
+import com.example.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
-public class IndexController {
+public class IndexController{
 
     @Autowired
     WebConfig webConfig;
+
+    @Autowired
+    CityService cityService;
 
     @RequestMapping("/")
     String index(ModelMap map) {
@@ -18,5 +25,11 @@ public class IndexController {
         map.addAttribute("name", webConfig.getAuthorName());
         map.addAttribute("blog", webConfig.getAuthorBlogUrl());
         return "index";
+    }
+
+    @RequestMapping("/citys")
+    List<CityEntity> getCitys() {
+        List<CityEntity> allCitys = cityService.getAllCitys(1, 10);
+        return allCitys;
     }
 }

@@ -1,21 +1,17 @@
 package com.example.service.impl;
 
 import com.example.dao.mapper.CityMapper;
-import com.example.model.City;
-import com.example.model.CityVO;
+import com.example.model.CityEntity;
 import com.example.service.CityService;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CityServiceImpl implements CityService {
 
     Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);
@@ -24,21 +20,18 @@ public class CityServiceImpl implements CityService {
     private CityMapper cityMapper;
 
     @Override
-    public List<CityVO> getAllCitys(int pageIndex, int pageSize) {
+    public List<CityEntity> getAllCitys(int pageIndex, int pageSize) {
 
-        PageHelper.startPage(pageIndex,pageSize);
+//        PageHelper.startPage(pageIndex,pageSize);
 
-        List<City> list = cityMapper.getAllCitys();
+        //List<CityEntity> list = cityMapper.selectAll();
 
-        List<CityVO> result = new ArrayList<>();
+        List list = new ArrayList();
+//        PageInfo page = new PageInfo(list);
 
-        PageInfo page = new PageInfo(list);
+//        logger.info("pageInfo => page"+page.getPageNum());
 
-        if(!CollectionUtils.isEmpty(list)){
-            BeanUtils.copyProperties(list,result);
-        }
-        logger.info("pageInfo => page"+page.getPageNum());
-        return result;
+        return list;
     }
 
 

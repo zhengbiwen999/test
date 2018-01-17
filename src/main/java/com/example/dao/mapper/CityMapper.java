@@ -1,7 +1,10 @@
 package com.example.dao.mapper;
 
-import com.example.model.City;
+import com.example.model.CityEntity;
 
-public interface CityMapper extends MyMapper<City> {
+import java.util.List;
 
+public interface CityMapper extends MyMapper<CityEntity> {
+
+    List<CityEntity> getAllCitys();
 }
